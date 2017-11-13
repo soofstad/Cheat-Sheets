@@ -20,4 +20,5 @@ Move large files between computers.
 Create a de-/re-atacheable console.
 Create `screen`
 Detache `ctrl-a d`
+List `screen -ls`
 Re-attache `screen -r`
