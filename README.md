@@ -1,7 +1,8 @@
 # Linux-Sheet
 My Linux cheat-sheet
-
-##Disc Usage
+___
+## Disc Usage
 Disc usage for directories in GB, sorted.
 
-$du -shBG ./*/ | sort -n
+`$du -shBG ./*/ | sort -n`
+___
