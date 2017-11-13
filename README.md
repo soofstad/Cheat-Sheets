@@ -1,7 +1,7 @@
 # Linux-Sheet
 My Linux cheat-sheet
-## Disc Usage
-Disc usage for directories in GB, sorted.
+## Disk Usage
+Disk usage for directories in GB, sorted.
 -s=summarize total -BG=Scale size to GB  -h=human readable
 
 `$du -shBG ./*/ | sort -n`
