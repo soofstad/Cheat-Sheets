@@ -14,7 +14,7 @@ Move files and between computers.
 Move large files between computers.
 -v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files
 
-`rsync -vazP --status /data/backup/gitlab stoo@10.36.33.122:/data2/tempCP`
+`rsync -vazP /data/backup/gitlab stoo@10.36.33.122:/data2/tempCP`
 
 ## Detached consol
 Create a de-/re-atacheable console.
