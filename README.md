@@ -14,7 +14,7 @@ Move files and between computers.<br>
 Move large files between computers.<br>
 -v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files
 
-`rsync -vazP /data/backup/gitlab stoo@10.36.33.122:/data/tempCP`
+`rsync -vazP /data/backup/gitlab root@10.36.33.122:/data/dokcer/dockerfiles/gitlab/data/`
 
 ## Detached consol
 Create a de-/re-atacheable console.<br>
@@ -32,4 +32,4 @@ To archive and compress a folder, keeping permissions<br>
 To uncompress tar.gz<br>
 -x=extract
 
-`tar -xvf myArchive.tar.gz`
+`tar -xvfz myArchive.tar.gz`
