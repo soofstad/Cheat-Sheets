@@ -10,11 +10,11 @@ Move files and between computers.<br>
 -C=Compress -r=Copy directories recursively
 
 `scp -Cr /data/backup/gitlab stoo@10.36.33.122:/home/stoo/gitlab`
-## Rsync big files
+## Rsync 
 Move large files between computers.<br>
--v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files
+-v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files -e=specify remote shell
 
-`rsync -vazP /data/backup/gitlab root@10.36.33.122:/data/dokcer/dockerfiles/gitlab/data/`
+`rsync -vazPe ssh /data/backup/gitlab root@10.36.33.122:/data/dokcer/dockerfiles/gitlab/data/`
 
 ## Detached consol
 Create a de-/re-atacheable console.<br>
