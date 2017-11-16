@@ -35,6 +35,7 @@ To archive and compress a folder, keeping permissions
 `tar cvzfp myArchive.tar.gz /myFolder-to-archive` 
 
 To uncompress tar.gz
+
 -x=extract
 
 `tar -xvf myArchive.tar.gz`
