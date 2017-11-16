@@ -19,16 +19,15 @@ Move large files between computers.
 ## Detached consol
 Create a de-/re-atacheable console.
 
-Create 
-`screen`
-Detache 
-`ctrl-a d`
-List 
-`screen -ls`
-Re-attache 
-`screen -r`
-Terminate screen from "inside" 
-`ctrl-a :quit`
+Create `screen`
+
+Detache `ctrl-a d`
+
+List `screen -ls`
+
+Re-attache `screen -r`
+
+Terminate screen from "inside" `ctrl-a :quit`
 ## Archive and compress
 To archive and compress a folder, keeping permissions
 -c=create archive -v=verbose -z=compress with gzip -f=file name type -p=preserve-permissions
