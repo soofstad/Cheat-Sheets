@@ -29,7 +29,7 @@ Re-attache `screen -r`
 
 Terminate screen from "inside" `ctrl-a :quit`
 ## Archive and compress
-To archive and compress a folder, keeping permissions
+To archive and compress a folder, keeping permissions<br>
 -c=create archive -v=verbose -z=compress with gzip -f=file name type -p=preserve-permissions
 
 `tar cvzfp myArchive.tar.gz /myFolder-to-archive` 
