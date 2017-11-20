@@ -33,3 +33,10 @@ To uncompress tar.gz<br>
 -x=extract
 
 `tar -xvfz myArchive.tar.gz`
+
+## Create files and fill with random data
+For testing...
+```
+touch myFile{1..10}.txt
+head -c 5M </dev/urandom > myFile10.txt
+```
