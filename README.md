@@ -39,4 +39,14 @@ For testing...
 ```
 touch myFile{1..10}.txt
 head -c 5M </dev/urandom > myFile10.txt
+# find . -name "*.txt" -exec head -c 5M </dev/urandom > {} \;
 ```
+
+## Permissions
+Change owner and group recursively<br>
+`chown -R root:stig <directory>`<br>
+Set "fine-grained"<br>
+`chmod ugo[+-=]rwx <file>`<br>
+Add additional user and set permissions recursively <br>
+`setfacl -R -m u:stig:rwx <directory>` <br> 
+
