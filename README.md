@@ -50,3 +50,17 @@ Set "fine-grained"<br>
 Add additional user and set permissions recursively <br>
 `setfacl -R -m u:stig:rwx <directory>` <br> 
 
+## SSH Access
+To get passwd-less root ssh login.<br>
+```
+[client]
+cd ~/.ssh
+ssh-keygen -t rsa
+(accept defaults, copy content of id_rsa.pub)
+[server]
+nano /root/.ssh/authorized-keys
+(paste the public key)
+cat >> /etc/security/access.conf
++ : root : <client-IP>
+ctrl+c
+```
