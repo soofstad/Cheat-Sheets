@@ -2,18 +2,15 @@
 My Linux cheat-sheet
 ## Disk Usage
 Disk usage for directories in GB, sorted.<br>
--s=summarize total -BG=Scale size to GB  -h=human readable
-
+-s=summarize total -BG=Scale size to GB  -h=human readable <br>
 `du -shBG ./*/ | sort -n`
 ## Secure Copy
 Move files and between computers.<br>
--C=Compress -r=Copy directories recursively
-
+-C=Compress -r=Copy directories recursively <br>
 `scp -Cr /data/backup/gitlab stoo@10.36.33.122:/home/stoo/gitlab`
 ## Rsync 
 Move large files between computers.<br>
--v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files -e=specify remote shell
-
+-v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files -e=specify remote shell<br>
 `rsync -vazPe ssh /data/backup/gitlab root@10.36.33.122:/data/dokcer/dockerfiles/gitlab/data/`
 
 ## Detached consol
@@ -25,15 +22,11 @@ Re-attache `screen -r` <br>
 Kill      `ctrl-a :quit` <br>
 ## Archive and compress
 To archive and compress a folder, keeping permissions<br>
--c=create archive -v=verbose -z=compress with gzip -f=file name type -p=preserve-permissions
-
-`tar cvzfp myArchive.tar.gz /myFolder-to-archive` 
-
+-c=create archive -v=verbose -z=compress with gzip -f=file name type -p=preserve-permissions <br>
+`tar cvzfp myArchive.tar.gz /myFolder-to-archive` <br>
 To uncompress tar.gz<br>
--x=extract
-
+-x=extract <br>
 `tar -xvfz myArchive.tar.gz`
-
 ## Create files and fill with random data
 For testing...
 ```
