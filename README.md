@@ -57,3 +57,28 @@ cat >> /etc/security/access.conf
 + : root : <client-IP>
 ctrl+c
 ```
+
+## Logical Volume Manager (CentOS/RHEL)
+System to manage physical volumes, logical volumes, and volume groups.<br>
+List
+```
+pvs
+lvs
+vgs
+lsblk (ls partitions)
+```
+Add new Physical Volume to a LVM system<br>
+`pvcreate /dev/<device_name>`
+
+Create new Volume Group <br>
+`vgcreate volume_group01 /dev/disk01 /dev/disk02`
+
+Extend Volume Group <br>
+`vgextend volume_group01 /dev/disk03`
+
+Create Logical Volume in Volume Group. -L=Size bytes -l=Size %<br>
+`lvcreate -n myDiskName -l 100%VG (-L50G) volume_group01`
+
+Extend or Reduce Logical Volume. -r=Resize filesystem -L=(+||set) <br>
+`lvextend(reduce) /dev/volume_group01/logical_volume01 -L+50G -r`
+
