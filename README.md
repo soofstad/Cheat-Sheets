@@ -13,13 +13,13 @@ Move large files between computers.<br>
 -v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files -e=specify remote shell<br>
 `rsync -vazPe ssh /data/backup/gitlab root@10.36.33.122:/data/dokcer/dockerfiles/gitlab/data/`
 
-## Detached consol
-Create a de-/re-atacheable console.<br>
-Create    `screen`<br>
-Detache   `ctrl-a d` <br>
-List      `screen -ls` <br>
-Re-attache `screen -r` <br>
-Kill      `ctrl-a :quit` <br>
+## Format Output
+Select field/column. <br>
+`cut --delimiter ":" --fields 2`<br>
+Remove specific characters.<br>
+Deletes whitespace, double quotes, and comma.<br>
+`tr --delete [:blank:]\",`
+
 ## Archive and compress
 To archive and compress a folder, keeping permissions<br>
 -c=create archive -v=verbose -z=compress with gzip -f=file name type -p=preserve-permissions <br>
