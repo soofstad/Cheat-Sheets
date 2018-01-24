@@ -4,6 +4,19 @@ My Linux cheat-sheet
 Disk usage for directories in GB, sorted.<br>
 -s=summarize total -BG=Scale size to GB  -h=human readable <br>
 `du -shBG ./*/ | sort -n`
+## Iptables
+Long list rules in chain 'INPUT'<br>
+`iptables -L INPUT --line-numbers -v`<br>
+Set chain policy<br>
+`iptables --policy INPUT ACCEPT`<br>
+New rule<br>
+`iptables --append INPUT --in-interface eth0 --out-interface lo --source 10.36.0.0/16 --destination 10.36.0.0/16 --protocol tcp --dports 22 --match comment --comment "004 accept SSH connections" --jump ACCEPT`<br>
+Delete by number<br>
+`iptables --delete INPUT 3`<br>
+Delete all in chain<br>
+`iptables --flush INPUT` <br>
+Delete all<br>
+`iptables --flush`<br>
 ## Secure Copy
 Move files and between computers.<br>
 -C=Compress -r=Copy directories recursively <br>
