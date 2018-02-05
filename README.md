@@ -99,3 +99,6 @@ Create Logical Volume in Volume Group. -L=Size bytes -l=Size %<br>
 Extend or Reduce Logical Volume. -r=Resize filesystem -L=(+||set) <br>
 `lvextend(reduce) /dev/volume_group01/logical_volume01 -L+50G -r`
 
+
+## GlusterFS Administration
+
