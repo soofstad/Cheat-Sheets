@@ -51,6 +51,19 @@ touch myFile{1..10}.txt
 head -c 5M </dev/urandom > myFile10.txt
 # find . -name "*.txt" -exec head -c 5M </dev/urandom > {} \;
 ```
+## Users and Groups
+Add a new system user 'john' with PID < 500 and no homedir.<br>
+`useradd -r john`<br>
+Give john a password.<br>
+`passwd john`<br>
+Delete john and his homedir.<br>
+`userdel john -r`<br>
+Create a new group called 'hockey'.<br>
+`groupadd hockey`<br>
+Add user 'john' to the group 'hockey' as a supplementary group.<br>
+`usermod -a -G hockey john`<br>
+Delete group 'hockey'.<br>
+`groupdel hockey`<br>
 
 ## Permissions
 Change owner and group recursively<br>
