@@ -44,6 +44,16 @@ To archive and compress a folder, keeping permissions<br>
 To uncompress tar.gz<br>
 -x=extract <br>
 `tar -xvfz myArchive.tar.gz`
+
+## Create a file by a Here Document
+```
+cat << EOF > /etc/apt/apt.conf
+Aquire::http::proxy "http://www-proxy.statoil.no:80";
+Aquire::https::proxy "http://www-proxy.statoil.no:80";
+
+EOF
+```
+
 ## Create files and fill with random data
 For testing...
 ```
