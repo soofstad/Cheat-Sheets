@@ -71,7 +71,9 @@ Delete john and his homedir.<br>
 Create a new group called 'hockey'.<br>
 `groupadd hockey`<br>
 Add user 'john' to the group 'hockey' as a supplementary group.<br>
-`usermod -a -G hockey john`<br>
+`gpasswd --add john hockey`<br>
+Delete user 'john'from the group 'hockey'.<br>
+`gpasswd --delete john hockey`<br>
 Delete group 'hockey'.<br>
 `groupdel hockey`<br>
 
