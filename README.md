@@ -80,8 +80,6 @@ Delete group 'hockey'.<br>
 ## Permissions
 Change owner and group recursively<br>
 `chown -R root:stig <directory>`<br>
-Add existing user to group<br>
-`usermod -a -G docker stoo`<br>
 Set "fine-grained"<br>
 `chmod ugo[+-=]rwx <file>`<br>
 Add additional user and set permissions recursively <br>
