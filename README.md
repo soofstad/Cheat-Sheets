@@ -2,7 +2,7 @@
 My Linux cheat-sheet
 ## Disk Usage
 Disk usage for directories in GB, sorted.<br>
--s=summarize total -BG=Scale size to GB  -h=human readable <br>
+-s=summarize total -BG=size to GB  -h=human readable <br>
 `du -shBG ./*/ | sort -n`
 ## Iptables
 Long list rules in chain 'INPUT'<br>
@@ -17,10 +17,6 @@ Delete all in chain<br>
 `iptables --flush INPUT` <br>
 Delete all<br>
 `iptables --flush`<br>
-## Secure Copy
-Move files and between computers.<br>
--C=Compress -r=Copy directories recursively <br>
-`scp -Cr /data/backup/gitlab stoo@10.36.33.122:/home/stoo/gitlab`
 ## Rsync 
 Move large files between computers.<br>
 -v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files -e=specify remote shell<br>
@@ -43,7 +39,7 @@ To archive and compress a folder, keeping permissions<br>
 `tar cvzfp myArchive.tar.gz /myFolder-to-archive` <br>
 To uncompress tar.gz<br>
 -x=extract <br>
-`tar -xvfz myArchive.tar.gz`
+`tar -xvzf myArchive.tar.gz`
 
 ## Create a file by a Here Document
 ```
