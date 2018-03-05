@@ -29,8 +29,8 @@ Remove specific characters.<br>
 Deletes whitespace, double quotes, and comma.<br>
 `tr --delete [:blank:]\",`<br>
 Replace string.<br>
-'s' is the sed program. Replaces 'foo' with 'bar', option '/g' for all occurrances.<br>
-`sed "s/foo/bar/g"`
+'s' is the substitution command. Replaces 'foo' with 'bar', option 'g' for all occurrances.<br>
+`sed "s|foo|bar|g"`
 
 
 ## Archive and compress
