@@ -32,7 +32,6 @@ Replace string.<br>
 's' is the substitution command. Replaces 'foo' with 'bar', option 'g' for all occurrances.<br>
 `sed "s|foo|bar|g"`
 
-
 ## Archive and compress
 To archive and compress a folder, keeping permissions<br>
 -c=create archive -v=verbose -z=compress with gzip -f=file name type -p=preserve-permissions <br>
@@ -95,6 +94,21 @@ cat >> /etc/security/access.conf
 + : root : <client-IP>
 ctrl+c
 ```
+## Mount a device
+To list devices and mountpoint;<br>
+`lsblk`
+Might need to make a file system on the disk first...
+`mkfs --type ext4 /dev/sdb`
+Create a dir to mount in and then mount.
+```
+mkdir /data
+mount /dev/sdb /data
+```
+Consider adding to fstab.
+To get UUID of all devices;
+`blkid`
+Edit /etc/fstab
+`UUID=41c22818-fbad-4da6-8196-c816df0b7aa8  /data      ext4    defaults,errors=remount-ro 0       1`
 
 ## Logical Volume Manager (CentOS/RHEL)
 System to manage physical volumes, logical volumes, and volume groups.<br>
