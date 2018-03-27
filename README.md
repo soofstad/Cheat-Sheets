@@ -110,7 +110,7 @@ To get UUID of all devices;<br>
 Edit /etc/fstab<br>
 `UUID=41c22818-fbad-4da6-8196-c816df0b7aa8  /data      ext4    defaults,errors=remount-ro 0       1`
 
-## Logical Volume Manager (CentOS/RHEL)
+## Logical Volume Manager
 System to manage physical volumes, logical volumes, and volume groups.<br>
 List
 ```
@@ -135,5 +135,31 @@ Extend or Reduce Logical Volume. -r=Resize filesystem -L=(+||set) <br>
 `lvextend(reduce) /dev/volume_group01/logical_volume01 -L+50G -r`
 
 
-## GlusterFS Administration
+## ZFS Administration
+https://docs.oracle.com/cd/E19253-01/819-5461/index.html
+#### `zpool` for pool administration, `zfs` for filesystem administration.<br>
+Create pool named "tank" with mirror on sda1 and sdb2, sdc3 as cache and mount point "/data"<br>
+`zpool create tank mirror sda1 sdb2 cache sdc3 -m /data`<br>
+Extend pool<br>
+`zpool add tank sdd4`<br>
+List pool information<br>
+```
+zpool status
+zpool list
+zpool iostat
+```
+List, get, and set properties<br>
+```
+zfs get all tank
+zfs get compression tank
+zfs set compression=on tank
+```
+Create snapshot<br>
+`zfs snapshot tank@snapname`<br>
+List Snapshots<br>
+`zfs list -t snapshot`<br>
+Rollback to snapshot<br>
+`zfs rollback tank@snapname`<br>
+
+
 
