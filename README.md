@@ -40,7 +40,7 @@ To uncompress tar.gz<br>
 -x=extract <br>
 `tar -xvzf myArchive.tar.gz`
 
-## Create a file by a Here Document
+## Create a file with Here Document
 ```
 cat << EOF > /etc/apt/apt.conf
 Aquire::http::proxy "http://www-proxy.statoil.no:80";
@@ -117,7 +117,6 @@ List
 pvs
 lvs
 vgs
-lsblk (ls partitions)
 ```
 Add new Physical Volume to a LVM system<br>
 `pvcreate /dev/<device_name>`
@@ -157,7 +156,7 @@ zfs set compression=on tank
 Create snapshot<br>
 `zfs snapshot tank@snapname`<br>
 List Snapshots<br>
-`zfs list -t snapshot`<br>
+`zfs list -t snapshot -o name,used,creation`<br>
 Rollback to snapshot<br>
 `zfs rollback tank@snapname`<br>
 
