@@ -1,7 +1,32 @@
 # Linux-Sheet
 My Linux cheat-sheet
+
+## Users and Groups
+Add a new system user 'john' with PID < 500 and no homedir.<br>
+`useradd -r john`<br>
+Give john a password.<br>
+`passwd john`<br>
+Delete john and his homedir.<br>
+`userdel john -r`<br>
+Create a new group called 'hockey'.<br>
+`groupadd hockey`<br>
+Add user 'john' to the group 'hockey' as a supplementary group.<br>
+`gpasswd --add john hockey`<br>
+Delete user 'john'from the group 'hockey'.<br>
+`gpasswd --delete john hockey`<br>
+Delete group 'hockey'.<br>
+`groupdel hockey`<br>
+
+## Permissions
+Change owner and group recursively<br>
+`chown -R root:stig <directory>`<br>
+Set "fine-grained"<br>
+`chmod ugo[+-=]rwx <file>`<br>
+Add additional user and set permissions recursively <br>
+`setfacl -R -m u:stig:rwx <directory>` <br> 
+
 ## Disk Usage
-Disk usage for directories in GB, sorted.<br>
+Disk usage for directories, in GB, sorted.<br>
 -s=summarize total -BG=size to GB  -h=human readable <br>
 `du -shBG ./*/ | sort -n`
 ## Iptables
@@ -17,10 +42,11 @@ Delete all in chain<br>
 `iptables --flush INPUT` <br>
 Delete all<br>
 `iptables --flush`<br>
+
 ## Rsync 
 Move large files between computers.<br>
--v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files -e=specify remote shell<br>
-`rsync -vazPe ssh /data/backup/gitlab root@10.36.33.122:/data/dokcer/dockerfiles/gitlab/data/`
+-v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files<br>
+`rsync -vazP /data/backup/gitlab root@10.36.33.122:/data/dokcer/dockerfiles/gitlab/data/`
 
 ## Format Output
 Select field/column. <br>
@@ -56,29 +82,42 @@ touch myFile{1..10}.txt
 head -c 5M </dev/urandom > myFile10.txt
 # find . -name "*.txt" -exec head -c 5M </dev/urandom > {} \;
 ```
-## Users and Groups
-Add a new system user 'john' with PID < 500 and no homedir.<br>
-`useradd -r john`<br>
-Give john a password.<br>
-`passwd john`<br>
-Delete john and his homedir.<br>
-`userdel john -r`<br>
-Create a new group called 'hockey'.<br>
-`groupadd hockey`<br>
-Add user 'john' to the group 'hockey' as a supplementary group.<br>
-`gpasswd --add john hockey`<br>
-Delete user 'john'from the group 'hockey'.<br>
-`gpasswd --delete john hockey`<br>
-Delete group 'hockey'.<br>
-`groupdel hockey`<br>
 
-## Permissions
-Change owner and group recursively<br>
-`chown -R root:stig <directory>`<br>
-Set "fine-grained"<br>
-`chmod ugo[+-=]rwx <file>`<br>
-Add additional user and set permissions recursively <br>
-`setfacl -R -m u:stig:rwx <directory>` <br> 
+## Network stuff (with iproute2 tools)
+List all listening TCP sockets, resolv IP, show port a numeric, and display PID<br>
+`ss --listen --tcp --resolv --numeric --process`
+`ss -ltrnp`
+
+List the kernels routing table.<br>
+`ip route` or `route` or `netstat -r`
+
+Delete a route entry.<br>
+`ip route del ip route add 192.168.2.0/24 via 192.168.1.2`
+Add new default route.<br>
+`ip route add default via 192.168.1.1`
+Add a a route with a netmask.<br>
+`ip route add 192.168.2.0/24 via 192.168.1.2`
+
+List NIC's.<br>
+`ip addr`
+
+Disabel/Enable NIC.
+`ip link set eth0 down`
+`ip link set eth up`
+
+Configure NIC with IP, broadcast, and netmask.
+`ip addr add 192.168.1.2/24 broadcast 192.168.1.255 dev eth0`
+
+
+## Inspect processes
+List all processes with full format.<br>
+`ps -ef`
+
+List all processes for current user.<br>
+`ps -af`
+
+List only process with PID 2020 with full format and 'word-wrap'.<br>
+`ps -fwwp 2020` 
 
 ## SSH Access
 To get passwd-less root ssh login.<br>
@@ -94,11 +133,12 @@ cat >> /etc/security/access.conf
 + : root : <client-IP>
 ctrl+c
 ```
+
 ## Mount a device
 To list devices and mountpoint;<br>
 `lsblk`<br>
 Might need to make a file system on the disk first...<br>
-`mkfs --type ext4 /dev/sdb`<br>
+`mkfs --type xfs /dev/sdb`<br>
 Create a dir to mount in and then mount.<br>
 ```
 mkdir /data
@@ -108,7 +148,9 @@ Consider adding to fstab.<br>
 To get UUID of all devices;<br>
 `blkid`<br>
 Edit /etc/fstab<br>
-`UUID=41c22818-fbad-4da6-8196-c816df0b7aa8  /data      ext4    defaults,errors=remount-ro 0       1`
+`UUID=41c22818-fbad-4da6-8196-c816df0b7aa8  /data      xfs    defaults,errors=remount-ro 0       1`
+
+## Add or Extend swap-file
 
 ## Logical Volume Manager
 System to manage physical volumes, logical volumes, and volume groups.<br>
@@ -159,6 +201,3 @@ List Snapshots<br>
 `zfs list -t snapshot -o name,used,creation`<br>
 Rollback to snapshot<br>
 `zfs rollback tank@snapname`<br>
-
-
-
