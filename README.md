@@ -76,11 +76,10 @@ EOF
 ```
 
 ## Create files and fill with random data
-For testing...
+
 ```
 touch myFile{1..10}.txt
 head -c 5M </dev/urandom > myFile10.txt
-# find . -name "*.txt" -exec head -c 5M </dev/urandom > {} \;
 ```
 
 ## Network stuff (with iproute2 tools)
@@ -93,19 +92,22 @@ List the kernels routing table.<br>
 
 Delete a route entry.<br>
 `ip route del ip route add 192.168.2.0/24 via 192.168.1.2`
+
 Add new default route.<br>
 `ip route add default via 192.168.1.1`
+
 Add a a route with a netmask.<br>
 `ip route add 192.168.2.0/24 via 192.168.1.2`
 
 List NIC's.<br>
 `ip addr`
 
-Disabel/Enable NIC.
+Disabel/Enable NIC.<br>
 `ip link set eth0 down`
-`ip link set eth up`
 
-Configure NIC with IP, broadcast, and netmask.
+`ip link set eth0 up`
+
+Configure NIC with IP, broadcast, and netmask.<br>
 `ip addr add 192.168.1.2/24 broadcast 192.168.1.255 dev eth0`
 
 
