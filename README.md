@@ -161,17 +161,13 @@ Edit /etc/fstab
 ## Tmux
 New named session  
 `tmux new -s mysession`  
-
 Detach from session  
-`Ctrl+b d`
-
+`Ctrl+b d`  
 List sessions  
-`tmux ls`
-
-Attach to session  
-Last  
+`tmux ls`  
+Attach to last session  
 `tmux a`  
-Named  
+Attach to named session
 `tmux a -t mysession`
 ## Logical Volume Manager
 System to manage physical volumes, logical volumes, and volume groups.  
@@ -222,15 +218,3 @@ List Snapshots
 `zfs list -t snapshot -o name,used,creation`  
 Rollback to snapshot  
 `zfs rollback tank@snapname`  
-
-## Tmux
-New session    
-`tmux new -s newsession`  
-Detach from session  
-`ctrl+b d`  
-List sessions  
-`tmux ls`  
-Attach to session  
-`tmux a  -t oldsession`  
-
-
