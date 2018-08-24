@@ -121,6 +121,10 @@ List all processes for current user.
 List only process with PID 2020 with full format and 'word-wrap'.  
 `ps -fwwp 2020` 
 
+## Certificates (WIP)
+Convert .cer to unix .pem and .key  
+`openssl x509 -inform der -in certificate.cer -out certificate.pem`
+
 ## SSH Access
 To get passwd-less root ssh login.  
 ```bash
@@ -139,21 +143,36 @@ ctrl+c
 ## Mount a device
 To list devices and mountpoint;  
 `lsblk`  
-Might need to make a file system on the disk first...  
+If the device have been formated, you need to make a file system on the disk first.    
 `mkfs --type xfs /dev/sdb`  
 Create a dir to mount in and then mount.  
 ```bash
 mkdir /data
 mount /dev/sdb /data
 ```
-Consider adding to fstab.  
-To get UUID of all devices;  
+Consider adding to fstab.    
+To get UUID of all devices;    
 `blkid`  
 Edit /etc/fstab  
 `UUID=41c22818-fbad-4da6-8196-c816df0b7aa8  /data      xfs    defaults,errors=remount-ro 0       1`
 
 ## Add or Extend swap-file
 
+## Tmux
+New named session  
+`tmux new -s mysession`  
+
+Detach from session  
+`Ctrl+b d`
+
+List sessions  
+`tmux ls`
+
+Attach to session  
+Last  
+`tmux a`  
+Named  
+`tmux a -t mysession`
 ## Logical Volume Manager
 System to manage physical volumes, logical volumes, and volume groups.  
 List  
@@ -178,8 +197,8 @@ Extend or Reduce Logical Volume. -r=Resize filesystem -L=(+||set)
 
 
 ## ZFS Administration
-https://docs.oracle.com/cd/E19253-01/819-5461/index.html
-#### `zpool` for pool administration, `zfs` for filesystem administration.  
+https://docs.oracle.com/cd/E19253-01/819-5461/index.html  
+__`zpool` for pool administration, `zfs` for filesystem administration.__  
 Create pool named "tank" with mirror on sda1 and sdb2, sdc3 as cache and mount point "/data"  
 `zpool create tank mirror sda1 sdb2 cache sdc3 -m /data`  
 Extend pool  
@@ -203,3 +222,15 @@ List Snapshots
 `zfs list -t snapshot -o name,used,creation`  
 Rollback to snapshot  
 `zfs rollback tank@snapname`  
+
+## Tmux
+New session    
+`tmux new -s newsession`  
+Detach from session  
+`ctrl+b d`  
+List sessions  
+`tmux ls`  
+Attach to session  
+`tmux a  -t oldsession`  
+
+
