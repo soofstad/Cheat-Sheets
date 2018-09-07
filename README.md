@@ -1,5 +1,6 @@
 # Linux-Sheet
 My Linux cheat-sheet
+[#PSQL](psql.md)
 
 ## Users and Groups
 Add a new system user 'john' with PID < 500 and no homedir.  
