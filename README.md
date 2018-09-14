@@ -4,10 +4,10 @@ An encyclopedia for those who _"actually know this"_
     a   {font-size:1.5em}
 </style>
 <div style='display:flex; justify-content:space-around;'>
-    <a href="./linux.md">
+    <a href="./linux">
         Linux
     </a>
-    <a href="python.md">
+    <a href="python">
         Python
     </a>
     <a href="git.md">
