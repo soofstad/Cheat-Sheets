@@ -18,4 +18,15 @@ An encyclopedia for those who _"actually know this"_
     <a href="react.md">
         React
     </a>
-</div>
+</div>  
+
+# Git
+My Git cheat-sheet
+## Git Rebase
+Make sure you have the latest master version  
+`git checkout master`  
+`git pull`  
+Back to your branch...  
+`git checkout <mybranch>`  
+Squash my branch first, do the rebase interactively, and rewrite last 4 commits    
+`git rebase -i master HEAD~4`
