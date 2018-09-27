@@ -141,9 +141,9 @@ List all processes for current user.
 List only process with PID 2020 with full format and 'word-wrap'.  
 `ps -fwwp 2020` 
 
-## Certificates (WIP)
-Convert .cer to unix .pem and .key  
-`openssl x509 -inform der -in certificate.cer -out certificate.pem`
+## Certificates (WIP) 
+Convert .key and .crt to .pfx  
+`openssl pkcs12 -export -out domain.com.pfx -inkey domain.com.key -in domain.com.crt`
 
 ## SSH Access
 To get passwd-less root ssh login.  
