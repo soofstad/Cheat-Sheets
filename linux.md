@@ -18,6 +18,9 @@ An encyclopedia for those who _"actually know this"_
     <a href="react">
         React
     </a>
+    <a href="kubernetes">
+        Kubernetes
+    </a>
 </div>
 
 # Linux-Sheet
@@ -146,19 +149,18 @@ Convert .key and .crt to .pfx
 `openssl pkcs12 -export -out domain.com.pfx -inkey domain.com.key -in domain.com.crt`
 
 ## SSH Access
-To get passwd-less root ssh login.  
-```bash
-[client]
+To get password less ssh login.  
+Create keys on the client;
+```
 cd ~/.ssh
 ssh-keygen -t rsa
-(accept defaults, copy content of id_rsa.pub)
-[server]
-nano /root/.ssh/authorized-keys
-(paste the public key)
-cat >> /etc/security/access.conf
-+ : root : <client-IP>
-ctrl+c
 ```
+You may accept defaults. Make sure permissions on **id_rsa == 0600**. Copy content of id_rsa.pub.    
+On the server;
+```
+vim ~/.ssh/authorized-keys
+```
+Paste the clients *id_rsa.pub* content.
 
 ## Mount a device
 To list devices and mountpoint;  
@@ -214,7 +216,11 @@ Extend or Reduce Logical Volume. -r=Resize filesystem -L=(+||set)
 
 ## ZFS Administration
 https://docs.oracle.com/cd/E19253-01/819-5461/index.html  
-__`zpool` for pool administration, `zfs` for filesystem administration.__  
+_`zpool` for pool administration, `zfs` for filesystem administration._  
+**NB: Do not create/update pools by device name (sda, sdb). Use device ID(/dev/disk/by-id).**  
+Get disk id with `ls -lh /dev/disk/by-id`.
+
+
 Create pool named "tank" with mirror on sda1 and sdb2, sdc3 as cache and mount point "/data"  
 `zpool create tank mirror sda1 sdb2 cache sdc3 -m /data`  
 Extend pool  
