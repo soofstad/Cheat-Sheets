@@ -43,11 +43,15 @@ Delete group 'hockey'.
 ## Permissions
 Change owner and group recursively  
 `chown -R root:stig <directory>`  
-Set "fine-grained"  
-`chmod ugo[+-=]rwx <file>`  
+
+Set file permissions  
+`chmod ugo[+-=]rwx <file>` ||  `chmod 644 <file>` (1+x,2=w,4=r)    
+
 Add additional user and set permissions recursively   
 `setfacl -R -m u:stig:rwx <directory>`    
 
+Remove facl entry for a user  
+`setfacl -x u:stig <file>`
 ## Disk Usage
 Disk usage for directories, in GB, sorted.  
 -s=summarize total -BG=size to GB  -h=human readable   
