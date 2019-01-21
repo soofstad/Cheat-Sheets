@@ -89,8 +89,8 @@ To uncompress tar.gz
 ## Create a file with Here Document
 ``` bash
 cat << EOF > /etc/apt/apt.conf
-Aquire::http::proxy "http://www-proxy.statoil.no:80";
-Aquire::https::proxy "http://www-proxy.statoil.no:80";
+Aquire::http::proxy "http://proxyserver.no:80";
+Aquire::https::proxy "http://proxyserver.no:80";
 
 EOF
 ```
@@ -133,32 +133,34 @@ Configure NIC with IP, broadcast, and netmask.
 
 ## Inspect processes
 List all processes with full format.  
-`ps -ef`
-
+`ps -ef`  
 List all processes for current user.  
-`ps -af`
-
+`ps -af`  
 List only process with PID 2020 with full format and 'word-wrap'.  
 `ps -fwwp 2020` 
 
-## Certificates (WIP)
-Convert .cer to unix .pem and .key  
-`openssl x509 -inform der -in certificate.cer -out certificate.pem`
+## Certificates
+New Certificate Signing Request  
+`openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key`  
+Inspect CRT-file  
+`openssl x509 -in certificate.crt -text -noout`  
+Convert .crt/.cer/.der to .pem  
+`openssl x509 -inform der -in certificate.crt -out certificate.pem`  
+Convert .pem to .crt  
+`openssl x509 -outform der -in certificate.pem -out certificate.crt`  
 
 ## SSH Access
-To get passwd-less root ssh login.  
-```bash
-[client]
-cd ~/.ssh
-ssh-keygen -t rsa
-(accept defaults, copy content of id_rsa.pub)
-[server]
-nano /root/.ssh/authorized-keys
-(paste the public key)
-cat >> /etc/security/access.conf
-+ : root : <client-IP>
-ctrl+c
-```
+If the client don't have keys, generate them.  
+`ssh-keygen -b 4096`  
+
+On the target, paste the clients public key here;  
+`vim /home/user/.ssh/authorized-keys`  
+
+On some old RHEL images you might need this.  
+/etc/security/access.conf  
+`+ : root : <client-IP>`
+
+
 
 ## Mount a device
 To list devices and mountpoint;  

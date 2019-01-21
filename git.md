@@ -30,3 +30,9 @@ Back to your branch...
 `git checkout <mybranch>`  
 Squash my branch first, do the rebase interactively, and rewrite last 4 commits    
 `git rebase -i master HEAD~4`
+
+## Permanently discard all local changes
+All files  
+`git reset --hard`  
+Some files  
+`git checkout -- file01.txt file02.txt`
