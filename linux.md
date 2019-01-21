@@ -18,6 +18,9 @@ An encyclopedia for those who _"actually know this"_
     <a href="react">
         React
     </a>
+    <a href="kubernetes">
+        Kubernetes
+    </a>
 </div>
 
 # Linux-Sheet
@@ -40,11 +43,15 @@ Delete group 'hockey'.
 ## Permissions
 Change owner and group recursively  
 `chown -R root:stig <directory>`  
-Set "fine-grained"  
-`chmod ugo[+-=]rwx <file>`  
+
+Set file permissions  
+`chmod ugo[+-=]rwx <file>` ||  `chmod 644 <file>` (1+x,2=w,4=r)    
+
 Add additional user and set permissions recursively   
 `setfacl -R -m u:stig:rwx <directory>`    
 
+Remove facl entry for a user  
+`setfacl -x u:stig <file>`
 ## Disk Usage
 Disk usage for directories, in GB, sorted.  
 -s=summarize total -BG=size to GB  -h=human readable   
@@ -160,8 +167,6 @@ On some old RHEL images you might need this.
 /etc/security/access.conf  
 `+ : root : <client-IP>`
 
-
-
 ## Mount a device
 To list devices and mountpoint;  
 `lsblk`  
@@ -216,7 +221,11 @@ Extend or Reduce Logical Volume. -r=Resize filesystem -L=(+||set)
 
 ## ZFS Administration
 https://docs.oracle.com/cd/E19253-01/819-5461/index.html  
-__`zpool` for pool administration, `zfs` for filesystem administration.__  
+_`zpool` for pool administration, `zfs` for filesystem administration._  
+**NB: Do not create/update pools by device name (sda, sdb). Use device ID(/dev/disk/by-id).**  
+Get disk id with `ls -lh /dev/disk/by-id`.
+
+
 Create pool named "tank" with mirror on sda1 and sdb2, sdc3 as cache and mount point "/data"  
 `zpool create tank mirror sda1 sdb2 cache sdc3 -m /data`  
 Extend pool  
