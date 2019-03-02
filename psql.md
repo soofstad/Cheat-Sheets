@@ -21,7 +21,23 @@ An encyclopedia for those who _"actually know this"_
 </div>
 
 # PSQL
+
+## Backup and restore
+
+To login as the user 'nextcloud' and dump the 'nextcloud-database' into the file '/data/database_dump'
+```bash
+pg_dump -U nextcloud  -f /data/database_dump nextcloud-database
 ```
+
+To import/restore the database from the dump;
+```bash
+psql -U nextcloud nextcloud-database < /data/database_dump
+```
+Note: The database must exist beforehand
+
+## Some unordered select and modify
+TODO: Order
+```psql
 docker exec -it sql01.prd.git.ofstad.xyz psql -U gitlab
 
 wide output: \x on
