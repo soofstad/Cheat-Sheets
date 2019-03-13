@@ -31,6 +31,9 @@ Back to your branch...
 Squash my branch first, do the rebase interactively, and rewrite last 4 commits    
 `git rebase -i master HEAD~4`
 
+## Undo the act of commiting, but keep changes
+`git reset --soft HEAD^`
+
 ## Permanently discard all local changes
 All files  
 `git reset --hard`  
