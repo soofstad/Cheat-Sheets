@@ -34,6 +34,10 @@ Squash my branch first, do the rebase interactively, and rewrite last 4 commits
 ## Undo the act of commiting, but keep changes
 `git reset --soft HEAD^`
 
+## Update remote origin
+
+`git remote set-url origin git@github.com:ORG/REPO.git`
+
 ## Permanently discard all local changes
 All files  
 `git reset --hard`  
