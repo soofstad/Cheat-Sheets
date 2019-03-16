@@ -22,6 +22,11 @@ An encyclopedia for those who _"actually know this"_
 
 # Python-Sheet
 My Python cheat-sheet
+
+## Pipenv
+To have Pipenv create .venv in project directory  
+`export PIPENV_VENV_IN_PROJECT=1`  
+May be done in `~/.bashrc`.
 ## Virtual Environment
 Install the package<br>
 `sudo apt install virtualenv`
