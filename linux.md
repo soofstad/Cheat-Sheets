@@ -1,5 +1,7 @@
 # My Cheat-sheets
+
 An encyclopedia for those who _"actually know this"_
+
 <style>
     a   {font-size:1.5em}
 </style>
@@ -24,7 +26,9 @@ An encyclopedia for those who _"actually know this"_
 </div>
 
 # Linux-Sheet
+
 ## Users and Groups
+
 Add a new system user 'john' with PID < 500 and no homedir.  
 `useradd -r john`  
 Give john a password.  
@@ -38,25 +42,30 @@ Add user 'john' to the group 'hockey' as a supplementary group.
 Delete user 'john'from the group 'hockey'.  
 `gpasswd --delete john hockey`  
 Delete group 'hockey'.  
-`groupdel hockey`  
+`groupdel hockey`
 
 ## Permissions
+
 Change owner and group recursively  
-`chown -R root:stig <directory>`  
+`chown -R root:stig <directory>`
 
 Set file permissions  
-`chmod ugo[+-=]rwx <file>` ||  `chmod 644 <file>` (1+x,2=w,4=r)    
+`chmod ugo[+-=]rwx <file>` || `chmod 644 <file>` (1+x,2=w,4=r)
 
-Add additional user and set permissions recursively   
-`setfacl -R -m u:stig:rwx <directory>`    
+Add additional user and set permissions recursively  
+`setfacl -R -m u:stig:rwx <directory>`
 
 Remove facl entry for a user  
 `setfacl -x u:stig <file>`
+
 ## Disk Usage
+
 Disk usage for directories, in GB, sorted.  
--s=summarize total -BG=size to GB  -h=human readable   
+-s=summarize total -BG=size to GB -h=human readable  
 `du -shBG ./*/ | sort -n`
+
 ## Iptables
+
 Long list rules in chain 'INPUT'  
 `iptables -L INPUT --line-numbers -v`  
 Set chain policy  
@@ -66,17 +75,19 @@ New rule
 Delete by number  
 `iptables --delete INPUT 3`  
 Delete all in chain  
-`iptables --flush INPUT`   
+`iptables --flush INPUT`  
 Delete all  
-`iptables --flush`  
+`iptables --flush`
 
-## Rsync 
+## Rsync
+
 Move large files between computers.  
 -v=verbose -a=archive, keep file structure and properties -z=compress -P=Show progress and keep partial transfered files  
 `rsync -vazP /data/backup/gitlab root@10.36.33.122:/data/dokcer/dockerfiles/gitlab/data/`
 
 ## Format Output
-Select field/column.   
+
+Select field/column.  
 `cut --delimiter ":" --fields 2`  
 Remove specific characters.  
 Deletes whitespace, double quotes, and comma.  
@@ -86,15 +97,17 @@ Replace string.
 `sed "s|foo|bar|g"`
 
 ## Archive and compress
+
 To archive and compress a folder, keeping permissions  
--c=create archive -v=verbose -z=compress with gzip -f=file name type -p=preserve-permissions   
-`tar cvzfp myArchive.tar.gz /myFolder-to-archive`   
+-c=create archive -v=verbose -z=compress with gzip -f=file name type -p=preserve-permissions  
+`tar cvzfp myArchive.tar.gz /myFolder-to-archive`  
 To uncompress tar.gz  
--x=extract   
+-x=extract  
 `tar -xvzf myArchive.tar.gz`
 
 ## Create a file with Here Document
-``` bash
+
+```bash
 cat << EOF > /etc/apt/apt.conf
 Aquire::http::proxy "http://proxyserver.no:80";
 Aquire::https::proxy "http://proxyserver.no:80";
@@ -110,6 +123,7 @@ head -c 5M </dev/urandom > myFile10.txt
 ```
 
 ## Network stuff (with iproute2 tools)
+
 List all listening TCP sockets, resolv IP, show port a numeric, and display PID  
 `ss --listen --tcp --resolv --numeric --process`
 `ss -ltrnp`
@@ -118,7 +132,7 @@ List the kernels routing table.
 `ip route` or `route` or `netstat -r`
 
 Delete a route entry.  
-`ip route del ip route add 192.168.2.0/24 via 192.168.1.2`
+`ip route del 192.168.2.0/24 via 192.168.1.2`
 
 Add new default route.  
 `ip route add default via 192.168.1.1`
@@ -137,16 +151,17 @@ Disabel/Enable NIC.
 Configure NIC with IP, broadcast, and netmask.  
 `ip addr add 192.168.1.2/24 broadcast 192.168.1.255 dev eth0`
 
-
 ## Inspect processes
+
 List all processes with full format.  
 `ps -ef`  
 List all processes for current user.  
 `ps -af`  
 List only process with PID 2020 with full format and 'word-wrap'.  
-`ps -fwwp 2020` 
+`ps -fwwp 2020`
 
 ## Certificates
+
 New Certificate Signing Request  
 `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key`  
 Inspect CRT-file  
@@ -154,38 +169,50 @@ Inspect CRT-file
 Convert .crt/.cer/.der to .pem  
 `openssl x509 -inform der -in certificate.crt -out certificate.pem`  
 Convert .pem to .crt  
-`openssl x509 -outform der -in certificate.pem -out certificate.crt`  
+`openssl x509 -outform der -in certificate.pem -out certificate.crt`
 
 ## SSH Access
+
 If the client don't have keys, generate them.  
-`ssh-keygen -b 4096`  
+`ssh-keygen -b 4096`
 
 On the target, paste the clients public key here;  
-`vim /home/user/.ssh/authorized-keys`  
+`vim /home/user/.ssh/authorized-keys`
 
 On some old RHEL images you might need this.  
 /etc/security/access.conf  
 `+ : root : <client-IP>`
 
 ## Mount a device
-To list devices and mountpoint;  
+
+To list block devices and mountpoints;  
 `lsblk`  
-If the device have been formated, you need to make a file system on the disk first.    
+If the device have been formated, you need to make a file system on the disk first.  
 `mkfs --type xfs /dev/sdb`  
-Create a dir to mount in and then mount.  
+Create a dir to mount into and then mount.
+
 ```bash
 mkdir /data
 mount /dev/sdb /data
 ```
-Consider adding to fstab.    
-To get UUID of all devices;    
+
+Consider adding to fstab.  
+To get UUID of all devices;  
 `blkid`  
 Edit /etc/fstab  
-`UUID=41c22818-fbad-4da6-8196-c816df0b7aa8  /data      xfs    defaults,errors=remount-ro 0       1`
+`UUID=41c22818-fbad-4da6-8196-c816df0b7aa8 /data xfs defaults,errors=remount-ro 0 1`
+
+### Mount a LUKS disk
+
+`udisksctl unlock -b /dev/sdb1`  
+`udisksctl mount -b /dev/dm-3`
+
+The disk will be mounted to something like `/media/stig/mydisk`
 
 ## Add or Extend swap-file
 
 ## Tmux
+
 New named session  
 `tmux new -s mysession`  
 Detach from session  
@@ -196,53 +223,58 @@ Attach to last session
 `tmux a`  
 Attach to named session
 `tmux a -t mysession`
+
 ## Logical Volume Manager
+
 System to manage physical volumes, logical volumes, and volume groups.  
 List  
 `pvs`  
 `lvs`  
-`vgs`  
+`vgs`
 
 Add new Physical Volume to a LVM system  
 `pvcreate /dev/<device_name>`
 
-Create new Volume Group   
+Create new Volume Group  
 `vgcreate volume_group01 /dev/disk01 /dev/disk02`
 
-Extend Volume Group   
+Extend Volume Group  
 `vgextend volume_group01 /dev/disk03`
 
 Create Logical Volume in Volume Group. -L=Size bytes -l=Size %  
 `lvcreate -n myDiskName -l 100%VG (-L50G) volume_group01`
 
-Extend or Reduce Logical Volume. -r=Resize filesystem -L=(+||set)   
+Extend or Reduce Logical Volume. -r=Resize filesystem -L=(+||set)  
 `lvextend(reduce) /dev/volume_group01/logical_volume01 -L+50G -r`
 
-
 ## ZFS Administration
-https://docs.oracle.com/cd/E19253-01/819-5461/index.html  
+
+<https://docs.oracle.com/cd/E19253-01/819-5461/index.html>  
 _`zpool` for pool administration, `zfs` for filesystem administration._  
 **NB: Do not create/update pools by device name (sda, sdb). Use device ID(/dev/disk/by-id).**  
-Get disk id with `ls -lh /dev/disk/by-id`.
-
+Get disk ids with `ls -lh /dev/disk/by-id`.
 
 Create pool named "tank" with mirror on sda1 and sdb2, sdc3 as cache and mount point "/data"  
 `zpool create tank mirror sda1 sdb2 cache sdc3 -m /data`  
 Extend pool  
-`zpool add tank sdd4`  
+`zpool add tank sdd4`
 
 List pool information
+
 ```bash
 zpool status
 zpool list
 zpool iostat
 ```
-List, get, and set properties  
+
+List, get, and set properties
+
 ```bash
 zfs get all tank
 zfs get compression tank
 zfs set compression=on tank
 ```
+
 Create snapshot  
 `zfs snapshot tank@snapname`  
 List Snapshots  
@@ -250,4 +282,4 @@ List Snapshots
 Rollback to snapshot  
 `zfs rollback tank@snapname`  
 Destroy snapshot  
-`zfs destroy tank@snapname` 
+`zfs destroy tank@snapname`
