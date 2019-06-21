@@ -35,6 +35,19 @@ psql -U nextcloud nextcloud-database < /data/database_dump
 ```
 Note: The database must exist beforehand
 
+## List databases and tables
+
+List databases  
+`\list`  
+`\l`  
+
+Change database  
+`\connect`  
+`\c`  
+
+List tables  
+`\dt`  
+
 ## Some unordered select and modify
 TODO: Order
 ```psql
@@ -44,13 +57,13 @@ wide output: \x on
 list tabels:  \dt
 list columns on tabel 'user': \d+ users
 
-update single email: 
+update single email:
 UPDATE users SET email='stoo@gmail.com' where username='STOO';
 
-get all users with statoil email: 
+get all users with statoil email:
 select username from users where email like '%gmail.com';
 
-get all users with 1 in the username:  
+get all users with 1 in the username:
 select username,email from users where username like '%1%';
 
 Delete users with username ending in '1':
