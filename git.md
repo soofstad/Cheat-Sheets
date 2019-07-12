@@ -21,17 +21,38 @@ An encyclopedia for those who _"actually know this"_
 </div>  
 
 # Git
-My Git cheat-sheet
-## Git Rebase
+
+## Stash
+Save you work for later  
+`git stash`  
+List stashes  
+`git stash list`  
+Apply your latest stash  
+`git stash apply`  
+Aply a spesific stash  
+`git stash apply stash@{2}`
+
+## Rebase
+
 Make sure you have the latest master version  
 `git checkout master`  
 `git pull`  
 Back to your branch...  
 `git checkout <mybranch>`  
-Squash my branch first, do the rebase interactively, and rewrite last 4 commits    
-`git rebase -i master HEAD~4`
+Squash my branch first  
+`git rebase -i HEAD~4`  
+`git rebase --onto master`
+
+## Remove file from history
+
+`git filter-branch --tree-filter 'rm (-rf) filename' HEAD`
+
+## Pushing to a remote branch with a different name
+
+`git push origin local-name:remote-name`
 
 ## Undo the act of commiting, but keep changes
+
 `git reset --soft HEAD^`
 
 ## Update remote origin
