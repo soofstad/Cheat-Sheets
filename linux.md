@@ -247,6 +247,22 @@ Create Logical Volume in Volume Group. -L=Size bytes -l=Size %
 Extend or Reduce Logical Volume. -r=Resize filesystem -L=(+||set)  
 `lvextend(reduce) /dev/volume_group01/logical_volume01 -L+50G -r`
 
+## Nmap
+
+Discover hosts on subnet (ping)  
+`nmap -sn 192.168.1.0/24`  
+
+Scan a target  
+`nmap 192.168.1.5`  
+
+Scan a target port  
+`nmap 192.168.1.5 -p 21`  
+
+Detailed scan (OS version, service versions)  
+`nmap -A 192.168.1.5`
+
+
+
 ## ZFS Administration
 
 <https://docs.oracle.com/cd/E19253-01/819-5461/index.html>  
