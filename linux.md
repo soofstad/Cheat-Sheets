@@ -50,6 +50,10 @@ Change owner and group recursively
 Set file permissions  
 `chmod ugo[+-=]rwx <file>` || `chmod 644 <file>` (1+x,2=w,4=r)
 
+User and Group get RWX, Others get RX  
+Set execute(x) only if the file is a directory or has x already (capital X)  
+`chmod ug=rwX,o=rX .`
+
 Add additional user and set permissions recursively  
 `setfacl -R -m u:stig:rwx <directory>`
 
