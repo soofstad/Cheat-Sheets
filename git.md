@@ -22,6 +22,16 @@
 
 # Git
 
+## Tags
+Create a tag  
+`git tag --sign --message "My message" my-tag`  
+List tags  
+`git tag -n`  
+Push tags  
+`git push origin --tags`  
+Delete tag  
+`git tag -d my-tag`  
+
 ## Stash
 Save you work for later  
 `git stash`  
