@@ -185,8 +185,10 @@ List only process with PID 2020 with full format and 'word-wrap'.
 
 ## Certificates
 
-New Certificate Signing Request  
+New Certificate Signing Request - Config from prompt  
 `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key`  
+New Certificate Signing Request - Config from file  
+`openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key -config x.example.com.config`  
 Inspect CRT-file  
 `openssl x509 -in certificate.crt -text -noout`  
 Convert .crt/.cer/.der to .pem  
@@ -283,7 +285,6 @@ Scan a target port
 
 Detailed scan (OS version, service versions)  
 `nmap -A 192.168.1.5`
-
 
 
 ## ZFS Administration
