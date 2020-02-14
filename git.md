@@ -74,3 +74,7 @@ All files
 `git reset --hard`  
 Some files  
 `git checkout -- file01.txt file02.txt`
+
+## Find a uncommitted but staged file that was lost (reset --hard)
+
+`git fsck --full --unreachable --no-reflog | grep blob | cut -d " " -f 3 | xargs -I {} git cat-file -p {} | grep "test_create_complex_array()" -C 200`
