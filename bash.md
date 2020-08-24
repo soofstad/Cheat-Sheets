@@ -1,7 +1,5 @@
 # My Cheat-sheets
 
-An encyclopedia for those who _"actually know this"_
-
 <style>
     a   {font-size:1.5em}
 </style>

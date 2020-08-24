@@ -51,7 +51,15 @@ Back to your branch...
 `git checkout <mybranch>`  
 Squash my branch first  
 `git rebase -i HEAD~4`  
-`git rebase --onto master`
+`git rebase master`
+
+## Refering to commits
+
+Commit hash: `git co c71nd`  
+Local branch: `git co develeop`  
+Remote branch: `git co origin:develop`  
+Tag: `git co v1.2.3`  
+Relative: `git co origin:develop~3`  
 
 ## Remove file from history
 

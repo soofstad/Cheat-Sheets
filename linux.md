@@ -202,7 +202,7 @@ If the client don't have keys, generate them.
 `ssh-keygen -b 4096`
 
 On the target, paste the clients public key here;  
-`vim /home/user/.ssh/authorized-keys`
+`/home/user/.ssh/authorized-keys`
 
 On some old RHEL images you might need this.  
 /etc/security/access.conf  
@@ -227,14 +227,12 @@ To get UUID of all devices;
 Edit /etc/fstab  
 `UUID=41c22818-fbad-4da6-8196-c816df0b7aa8 /data xfs defaults,errors=remount-ro 0 1`
 
-### Mount a LUKS disk
+## Mount a LUKS disk
 
 `udisksctl unlock -b /dev/sdb1`  
 `udisksctl mount -b /dev/dm-3`
 
 The disk will be mounted to something like `/media/stig/mydisk`
-
-## Add or Extend swap-file
 
 ## Tmux
 
@@ -285,7 +283,6 @@ Scan a target port
 
 Detailed scan (OS version, service versions)  
 `nmap -A 192.168.1.5`
-
 
 ## ZFS Administration
 

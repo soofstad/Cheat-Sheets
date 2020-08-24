@@ -1,5 +1,4 @@
 # My Cheat-sheets
-An 'oppslagsverk' for those who have done these kind of stuff before
 
 <style>
     a   {font-size:1.5em}
