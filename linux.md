@@ -37,9 +37,9 @@
 - [Network stuff (with iproute2 tools)](#network-stuff-with-iproute2-tools)
 - [Inspect processes](#inspect-processes)
 - [Certificates](#certificates)
+- [Systemd File](#systemd-file)
 - [SSH Access](#ssh-access)
 - [Mount a device](#mount-a-device)
-  - [Mount a LUKS disk](#mount-a-luks-disk)
 - [Add or Extend swap-file](#add-or-extend-swap-file)
 - [Tmux](#tmux)
 - [Logical Volume Manager](#logical-volume-manager)
@@ -195,6 +195,33 @@ Convert .crt/.cer/.der to .pem
 `openssl x509 -inform der -in certificate.crt -out certificate.pem`  
 Convert .pem to .crt  
 `openssl x509 -outform der -in certificate.pem -out certificate.crt`
+
+## Systemd File
+
+Save it as `/etc/systemd/system/<myservice>.service`
+
+```toml
+[Unit]
+Description=<This is my service that does this thing>
+
+[Service]
+ExecStart=<Command to execute>
+Restart=<What to do when service exits, killed, or timed-out   always|no|on-failure>
+RestartSec=<int seconds>
+
+[Install]
+# When to start the service. multi-user = after network, graphical.target = after GUI
+WantedBy=multi-user.target
+Requires=< list of prerequisites services>
+```
+
+Remember;
+
+```bash
+systemctl damon-reload
+systemctl enable myservice
+systemctl start myservice
+```
 
 ## SSH Access
 
