@@ -138,6 +138,11 @@ Aquire::https::proxy "http://proxyserver.no:80";
 EOF
 ```
 
+## SED (Stream Editor)
+
+Delete line 6;  
+`sed '6d' file.txt`
+
 ## Create files and fill with random data
 
 ```bash
@@ -229,7 +234,8 @@ If the client don't have keys, generate them.
 `ssh-keygen -b 4096`
 
 On the target, paste the clients public key here;  
-`/home/user/.ssh/authorized-keys`
+`/home/user/.ssh/authorized-keys`  
+Alternatively: `ssh-copy-id user@hostname` from client
 
 On some old RHEL images you might need this.  
 /etc/security/access.conf  
