@@ -22,7 +22,10 @@
 
 # Git
 
+<https://github.com/k88hudson/git-flight-rules>
+
 ## Tags
+
 Create a tag  
 `git tag --sign --message "My message" my-tag`  
 List tags  
@@ -33,6 +36,7 @@ Delete tag
 `git tag -d my-tag`  
 
 ## Stash
+
 Save you work for later  
 `git stash`  
 List stashes  
@@ -64,6 +68,10 @@ Relative: `git co origin:develop~3`
 ## Remove file from history
 
 `git filter-branch --tree-filter 'rm (-rf) filename' HEAD`
+
+## Pull single file from different ref
+
+`git checkout c81nd -- path/to/file.txt`
 
 ## Pushing to a remote branch with a different name
 
