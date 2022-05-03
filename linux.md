@@ -233,9 +233,30 @@ systemctl start myservice
 If the client don't have keys, generate them.  
 `ssh-keygen -b 4096`
 
-On the target, paste the clients public key here;  
-`/home/user/.ssh/authorized-keys`  
-Alternatively: `ssh-copy-id user@hostname` from client
+On the server, paste the clients public key into this file;  
+`/home/user/.ssh/authorized_keys`  
+Alternatively: Run `ssh-copy-id user@hostname` from client
+
+If there still are some issues, double check permissions, both on client and server:  
+Client `~/.ssh`:
+
+```bash
+drwxrwxr-x  2 sto sto 4096 feb.  24  2021 ./
+drwxr-xr-x 51 sto sto 4096 mai    3 09:26 ../
+-rw-------  1 sto sto 1674 feb.  24  2021 id_rsa
+-rw-r--r--  1 sto sto  400 feb.  24  2021 id_rsa.pub
+-rw-r--r--  1 sto sto 5756 okt.  15  2021 known_hosts
+```
+
+Server `~/.ssh`:
+
+```bash
+drwx------   2 remoteSto remoteSto   48 sep.   1  2018 .
+dr-xr-x---. 12 remoteSto remoteSto 4,0K nov.   2 02:13 ..
+-rw-r--r--   1 remoteSto remoteSto 1,2K jan.  20  2021 authorized_keys
+-rw-r--r--   1 remoteSto remoteSto  801 juli  21  2019 known_hosts
+```
+
 
 On some old RHEL images you might need this.  
 /etc/security/access.conf  
