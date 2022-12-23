@@ -31,7 +31,7 @@ Create a tag
 List tags  
 `git tag -n`  
 Push tags  
-`git push origin --tags`  
+`git push --tags`  
 Delete tag  
 `git tag -d my-tag`  
 
@@ -64,6 +64,12 @@ Local branch: `git co develeop`
 Remote branch: `git co origin:develop`  
 Tag: `git co v1.2.3`  
 Relative: `git co origin:develop~3`  
+
+## Create branch from fork Pull Request
+
+`git fetch origin pull/ID/head:BRANCH_NAME`
+
+`ID` being the number of the PR in Github
 
 ## Remove file from history
 
