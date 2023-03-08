@@ -30,10 +30,12 @@ Create a tag
 `git tag --sign --message "My message" my-tag`  
 List tags  
 `git tag -n`  
-Push tags  
-`git push --tags`  
 Delete tag  
 `git tag -d my-tag`  
+Push tag  
+`git push origin my-tag`  
+Push all tags (avoid this)  
+`git push --tags`  
 
 ## Stash
 
@@ -43,7 +45,7 @@ List stashes
 `git stash list`  
 Apply your latest stash  
 `git stash apply`  
-Aply a spesific stash  
+Apply a spesific stash  
 `git stash apply stash@{2}`
 
 ## Rebase
@@ -85,13 +87,14 @@ Relative: `git co origin:develop~3`
 
 ## Undo the act of commiting, but keep changes
 
-`git reset --soft HEAD^`
+`git reset --soft HEAD~1`
 
 ## Update remote origin
 
 `git remote set-url origin git@github.com:ORG/REPO.git`
 
 ## Permanently discard all local changes
+
 All files  
 `git reset --hard`  
 Some files  
